@@ -22,4 +22,15 @@ after_success:
   - docker push hrmtsngh18/multi-worker
 
 deploy:
-
+  provider: elasticbeanstalk
+  region: "ap-south-a"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-866587856762"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
